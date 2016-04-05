@@ -148,7 +148,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         if (mAuthTask != null) {
             return;
         }
-        /*
         // TODO Delete dummy login when actually implementing
         else {
             // Start new activity
@@ -156,8 +155,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             startActivity(intent);
             return;
         }
-        */
 
+        /*
         // Reset errors.
         mEmailView.setError(null);
         mPasswordView.setError(null);
@@ -198,6 +197,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
         }
+        */
     }
 
     private boolean isEmailValid(String email) {
