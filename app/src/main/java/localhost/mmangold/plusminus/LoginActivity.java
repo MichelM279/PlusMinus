@@ -153,6 +153,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Start new activity
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
+            finish(); // Somit kann nicht mehr back zu login
             return;
         }
 
