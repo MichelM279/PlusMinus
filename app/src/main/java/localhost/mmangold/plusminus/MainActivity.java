@@ -27,16 +27,17 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final FloatingActionButton actionA = (FloatingActionButton) findViewById(R.id.action_a);
-        actionA.setOnClickListener(new View.OnClickListener() {
+        final FloatingActionButton fab_add_friend = (FloatingActionButton) findViewById(R.id.fab_add_friend);
+        fab_add_friend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                actionA.setTitle("Action A clicked");
+                fab_add_friend.setTitle("Add Friend clicked");
             }
         });
 
-        final View actionB = findViewById(R.id.action_b);
+        final View fab_add_payment = findViewById(R.id.fab_add_payment);
 
+        /* // Button C can hide or show another button B
         FloatingActionButton actionC = new FloatingActionButton(getBaseContext());
         actionC.setTitle("Hide/Show Action above");
         actionC.setOnClickListener(new View.OnClickListener() {
@@ -45,8 +46,12 @@ public class MainActivity extends AppCompatActivity {
                 actionB.setVisibility(actionB.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
             }
         });
+        fab.addButton(actionC);
+        */
 
-        FloatingActionsMenu fab = (FloatingActionsMenu) findViewById(R.id.multiple_actions);
+        FloatingActionsMenu fab = (FloatingActionsMenu) findViewById(R.id.fab_multiple_actions);
+
+        // Example snackbar usage (popup message from below)
         /*fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });*/
-        fab.addButton(actionC);
     }
 
     // Menu icons are inflated just as they were with actionbar
