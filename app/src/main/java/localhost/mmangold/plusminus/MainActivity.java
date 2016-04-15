@@ -14,9 +14,14 @@ import android.app.Activity;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
+import android.app.ListActivity;
+import android.widget.ListView;
 
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +32,20 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // List items
+        final ListView listview = (ListView) findViewById(R.id.listView);
+        String[] friends = new String[] { "Michel","Hannes","Katha","Anki","Alex","Marcel",
+                "Matthias","Peter","James","Ella","Mia","Sarah","Lukas","Max","Köln","Polizei","Pascha" };
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, //StableArrayAdapter bei klasse selber schreiben
+                android.R.layout.simple_list_item_1, friends);
+        listview.setAdapter(adapter);
+
+        /*final ArrayList<String> list = new ArrayList<String>();
+        for (int i = 0; i < values.length; ++i) {
+            list.add(values[i]);
+        }*/
+
+        // Floating Action Menu buttons
         final FloatingActionButton fab_add_friend = (FloatingActionButton) findViewById(R.id.fab_add_friend);
         fab_add_friend.setOnClickListener(new View.OnClickListener() {
             @Override
