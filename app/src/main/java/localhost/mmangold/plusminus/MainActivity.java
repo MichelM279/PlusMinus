@@ -5,6 +5,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
@@ -12,9 +13,9 @@ import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import android.app.Activity;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.app.ListActivity;
 import android.widget.ListView;
@@ -29,19 +30,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Components
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        final RelativeLayout relative_layout = (RelativeLayout) findViewById(R.id.main_inner_relative_layout);
+        assert relative_layout != null;
+        relative_layout.getBackground().setAlpha(0);
+        final ListView list_view = (ListView) findViewById(R.id.main_inner_list_view);
+        assert list_view != null;
 
         // List items
-        final ListView listview = (ListView) findViewById(R.id.listView);
         String[] friends = new String[] { "Michel","Hannes","Katha","Anki","Alex","Marcel",
-                "Matthias","Peter","James","Ella","Mia","Sarah","Lukas","Max","Köln","Polizei","Pascha" };
+                "Matthias","Peter","James","Ella","Mia","Sarah","Lukas","Max","Köln","Polizei" };
         // TODO eigenen adapter schreiben für eigenes list layout
         // http://www.vogella.com/tutorials/AndroidListView/article.html
         // http://www.softwarepassion.com/android-series-custom-listview-items-and-adapters/
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, friends);
-        listview.setAdapter(adapter);
+        list_view.setAdapter(adapter);
 
         // TODO Click List item
         /*
@@ -60,30 +67,62 @@ public class MainActivity extends AppCompatActivity {
             list.add(values[i]);
         }*/
 
-        // Floating Action Menu buttons
+        // Floating Action Menu Buttons
         final FloatingActionButton fab_add_friend = (FloatingActionButton) findViewById(R.id.fab_add_friend);
+        assert fab_add_friend != null;
         fab_add_friend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 fab_add_friend.setTitle("Add Friend clicked");
             }
         });
-
-        final View fab_add_payment = findViewById(R.id.fab_add_payment);
-
-        /* // Button C can hide or show another button B
-        FloatingActionButton actionC = new FloatingActionButton(getBaseContext());
-        actionC.setTitle("Hide/Show Action above");
-        actionC.setOnClickListener(new View.OnClickListener() {
+        final FloatingActionButton fab_add_payment = (FloatingActionButton) findViewById(R.id.fab_add_payment);
+        assert fab_add_payment != null;
+        fab_add_payment.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                actionB.setVisibility(actionB.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
+            public void onClick(View view) {
+                fab_add_payment.setTitle("Add Payment clicked");
             }
         });
-        fab.addButton(actionC);
-        */
 
-        FloatingActionsMenu fab = (FloatingActionsMenu) findViewById(R.id.fab_multiple_actions);
+        // Floating Action Menu Main Button
+        final FloatingActionsMenu fab_menu = (FloatingActionsMenu) findViewById(R.id.fab_multiple_actions);
+        assert fab_menu != null;
+        fab_menu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
+            @Override
+            public void onMenuExpanded() {
+                relative_layout.getBackground().setAlpha(240);
+                list_view.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        fab_menu.collapse();
+                        return true;
+                    }
+                });
+            }
+
+            @Override
+            public void onMenuCollapsed() {
+                relative_layout.getBackground().setAlpha(0);
+                list_view.setOnTouchListener(null);
+            }
+
+            /*
+            @Override
+            public boolean onBackPressed() {
+                if (fab_menu.isExpanded()) {
+                    fab_menu.collapse();
+                    return true;
+                } else {
+                    return super.super.onBackPressed();
+                }
+            }
+
+            */
+
+        });
+
+
 
         // Example snackbar usage (popup message from below)
         /*fab.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +134,8 @@ public class MainActivity extends AppCompatActivity {
         });*/
     }
 
-    // Menu icons are inflated just as they were with actionbar
+    // Menu top bar
+    // Menu icons are inflated just as they were with actionbar.
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

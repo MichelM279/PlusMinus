@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    android:id="@+id/main_inner_relative_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,14 +10,15 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/white_overlay"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="localhost.mmangold.plusminus.MainActivity"
     tools:showIn="@layout/activity_main">
 
     <ListView
+        android:id="@+id/main_inner_list_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 </RelativeLayout>
