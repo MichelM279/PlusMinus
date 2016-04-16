@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO Click List item
         /*
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             protected void onListItemClick (AdapterView<?> parent, final View view, int position, long id) {
                 final String item = (String) parent.getItemAtPosition(position);
