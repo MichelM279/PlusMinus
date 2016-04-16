@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/friend_name"
         android:layout_weight="1"
-        android:layout_width="fill_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:text="Name" />
