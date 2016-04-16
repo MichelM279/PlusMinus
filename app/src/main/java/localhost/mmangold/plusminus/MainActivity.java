@@ -1,7 +1,6 @@
 package localhost.mmangold.plusminus;
 
 import android.os.Bundle;
-//import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,6 +13,7 @@ import android.app.Activity;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 import android.app.ListActivity;
@@ -36,9 +36,24 @@ public class MainActivity extends AppCompatActivity {
         final ListView listview = (ListView) findViewById(R.id.listView);
         String[] friends = new String[] { "Michel","Hannes","Katha","Anki","Alex","Marcel",
                 "Matthias","Peter","James","Ella","Mia","Sarah","Lukas","Max","Köln","Polizei","Pascha" };
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, //StableArrayAdapter bei klasse selber schreiben
+        // TODO eigenen adapter schreiben für eigenes list layout
+        // http://www.vogella.com/tutorials/AndroidListView/article.html
+        // http://www.softwarepassion.com/android-series-custom-listview-items-and-adapters/
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, friends);
         listview.setAdapter(adapter);
+
+        // TODO Click List item
+        /*
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            protected void onListItemClick (AdapterView<?> parent, final View view, int position, long id) {
+                final String item = (String) parent.getItemAtPosition(position);
+                //String item = (String) getListAdapter().getItem(position); // add "item" to makeText
+                Toast.makeText(this, "position" + position + " selected", Toast.LENGTH_LONG).show();
+            }
+        });
+        */
 
         /*final ArrayList<String> list = new ArrayList<String>();
         for (int i = 0; i < values.length; ++i) {
