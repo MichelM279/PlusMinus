@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">+Plus-Minus</string>
-    <string name="title_activity_main">Meine Freunde</string>
+    <string name="title_activity_main">Meine Kontakte</string>
 
     <string name="fab_add_friend">Freund hinzufügen</string>
     <string name="fab_add_payment">Zahlung hinzufügen</string>

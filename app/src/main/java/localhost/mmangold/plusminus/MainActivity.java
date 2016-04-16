@@ -43,14 +43,15 @@ public class MainActivity extends AppCompatActivity {
         // List items
         String[] friends = new String[] { "Michel","Hannes","Katha","Anki","Alex","Marcel",
                 "Matthias","Peter","James","Ella","Mia","Sarah","Lukas","Max","Köln","Polizei" };
-        // TODO eigenen adapter schreiben für eigenes list layout
+        int[] depts = new int[]{ 5,-5,10,20,40,13,15,18,19,42,1337,-51,13,-10,0,-20 };
+
+        // eigenen adapter schreiben für eigenes list layout
         // http://www.vogella.com/tutorials/AndroidListView/article.html
         // http://www.softwarepassion.com/android-series-custom-listview-items-and-adapters/
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, friends);
+        FriendListViewAdapter adapter = new FriendListViewAdapter(this,friends,depts);
         list_view.setAdapter(adapter);
 
-        // TODO Click List item
+        // to-do Click List item
         /*
         list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
