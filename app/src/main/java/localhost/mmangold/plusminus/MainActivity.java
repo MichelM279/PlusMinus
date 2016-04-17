@@ -1,5 +1,9 @@
 package localhost.mmangold.plusminus;
 
+import android.app.SearchManager;
+import android.content.Context;
+import android.database.MatrixCursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -17,15 +21,26 @@ import android.graphics.drawable.shapes.OvalShape;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
+import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.app.ListActivity;
 import android.widget.ListView;
 
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +57,14 @@ public class MainActivity extends AppCompatActivity {
         assert list_view != null;
 
         // List items
-        String[] friends = new String[] { "Michel","Hannes","Katha","Anki","Alex","Marcel",
-                "Matthias","Peter","James","Ella","Mia","Sarah","Lukas","Max","Köln","Polizei" };
-        int[] depts = new int[]{ 5,-5,0,20,40,13,15,18,19,42,1337,-51,13,-10,0,-20 };
+        String[] friends = new String[]{"Michel", "Hannes", "Katha", "Anki", "Alex", "Marcel",
+                "Matthias", "Peter", "James", "Ella", "Mia", "Sarah", "Lukas", "Max", "Köln", "Polizei"};
+        int[] depts = new int[]{5, -5, 0, 20, 40, 13, 15, 18, 19, 42, 1337, -51, 13, -10, 0, -20};
 
         // eigenen adapter schreiben für eigenes list layout
         // http://www.vogella.com/tutorials/AndroidListView/article.html
         // http://www.softwarepassion.com/android-series-custom-listview-items-and-adapters/
-        FriendListViewAdapter adapter = new FriendListViewAdapter(this,friends,depts);
+        FriendListViewAdapter adapter = new FriendListViewAdapter(this, friends, depts);
         list_view.setAdapter(adapter);
 
         // to-do Click List item
@@ -122,9 +137,7 @@ public class MainActivity extends AppCompatActivity {
             */
 
 
-
         });
-
 
 
         // Example snackbar usage (popup message from below)
@@ -135,6 +148,9 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });*/
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     // Menu top bar
@@ -166,4 +182,43 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Main Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://localhost.mmangold.plusminus/http/host/path")
+        );
+        AppIndex.AppIndexApi.start(client, viewAction);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Main Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://localhost.mmangold.plusminus/http/host/path")
+        );
+        AppIndex.AppIndexApi.end(client, viewAction);
+        client.disconnect();
+    }
 }
