@@ -29,53 +29,55 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="@dimen/activity_lower_bar_height"
-        android:layout_gravity="bottom">
+        android:layout_gravity="bottom"
+        android:background="@color/blue_semi_transparent">
 
         <TextView
             android:id="@+id/total_title"
-            android:layout_weight="1"
+            android:layout_weight="4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="30sp"
+            android:gravity="end"
             android:text="@string/total_title" />
         <TextView
             android:id="@+id/total_dept"
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30sp"
+            android:gravity="end"
             android:text="+10.000" />
     </LinearLayout>
-
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/fab_multiple_actions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
+        android:layout_gravity="bottom|start"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        app:fab_addButtonColorNormal="@color/white"
-        app:fab_addButtonColorPressed="@color/white_pressed"
+        app:fab_addButtonColorNormal="@color/pink"
+        app:fab_addButtonColorPressed="@color/pink_pressed"
         app:fab_addButtonPlusIconColor="@color/half_black"
         app:fab_labelStyle="@style/menu_labels_style"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp">
-
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="4dp">
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_add_friend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="@color/white"
-            app:fab_colorPressed="@color/white_pressed"/>
-
+            app:fab_colorPressed="@color/white_pressed"
+            android:src="@android:drawable/ic_input_add" />
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_add_payment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="@color/white"
-            app:fab_colorPressed="@color/white_pressed"/>
+            app:fab_colorPressed="@color/white_pressed"
+            android:src="@android:drawable/ic_menu_add"/>
         <!--app:fab_title="@string/fab_add_payment"-->
-
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 </android.support.design.widget.CoordinatorLayout>

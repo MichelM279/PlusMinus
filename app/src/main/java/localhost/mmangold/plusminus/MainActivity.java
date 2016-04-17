@@ -5,6 +5,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         // List items
         String[] friends = new String[] { "Michel","Hannes","Katha","Anki","Alex","Marcel",
                 "Matthias","Peter","James","Ella","Mia","Sarah","Lukas","Max","Köln","Polizei" };
-        int[] depts = new int[]{ 5,-5,10,20,40,13,15,18,19,42,1337,-51,13,-10,0,-20 };
+        int[] depts = new int[]{ 5,-5,0,20,40,13,15,18,19,42,1337,-51,13,-10,0,-20 };
 
         // eigenen adapter schreiben für eigenes list layout
         // http://www.vogella.com/tutorials/AndroidListView/article.html
@@ -144,5 +145,25 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // action with ID action_settings was selected
+            case R.id.action_settings:
+                Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                break;
+        }
+        return true;
+    }
+
+    // Override back to not close App
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "There's no going back from here. Never. Ever. Maybe soon.", Toast.LENGTH_SHORT).show();
+    }
+
 
 }
