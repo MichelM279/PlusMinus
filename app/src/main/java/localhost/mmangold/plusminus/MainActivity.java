@@ -2,6 +2,7 @@ package localhost.mmangold.plusminus;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.database.MatrixCursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -169,16 +170,17 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             // action with ID action_settings was selected
-            case R.id.action_sort_num:
-                Toast.makeText(this, "Num selected", Toast.LENGTH_SHORT).show();
-                break;
             case R.id.action_sort_alph:
                 Toast.makeText(this, "Alph selected", Toast.LENGTH_SHORT).show();
                 //menu.getItem(0).setIcon(getResources().getDrawable(R.drawable.ic_menu_manage));
                 menu.getItem(1).setIcon(ResourcesCompat.getDrawable(getResources(), R.drawable.common_ic_googleplayservices, null));
                 break;
+            case R.id.action_sort_num:
+                Toast.makeText(this, "Num selected", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.action_settings:
-                Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;
