@@ -7,6 +7,10 @@
 
     <string name="total">Gesamt:</string>
 
+    <string name="menu_settings_button">Settings</string>
+    <string name="menu_sort_num">Sort by number</string>
+    <string name="menu_sort_alph">Sort alphabetically</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>

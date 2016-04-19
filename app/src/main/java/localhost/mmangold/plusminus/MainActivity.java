@@ -6,6 +6,7 @@ import android.database.MatrixCursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
+    private Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        this.menu = menu;
         return true;
     }
 
@@ -166,6 +169,14 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             // action with ID action_settings was selected
+            case R.id.action_sort_num:
+                Toast.makeText(this, "Num selected", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_sort_alph:
+                Toast.makeText(this, "Alph selected", Toast.LENGTH_SHORT).show();
+                //menu.getItem(0).setIcon(getResources().getDrawable(R.drawable.ic_menu_manage));
+                menu.getItem(1).setIcon(ResourcesCompat.getDrawable(getResources(), R.drawable.common_ic_googleplayservices, null));
+                break;
             case R.id.action_settings:
                 Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT).show();
                 break;

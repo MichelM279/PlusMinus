@@ -4,9 +4,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <!-- Add Menu Buttons here -->
     <item
+        android:id="@+id/action_sort_num"
+        android:icon="@android:drawable/ic_delete"
+        app:showAsAction="ifRoom"
+        android:title="@string/menu_sort_num" />
+    <item
+        android:id="@+id/action_sort_alph"
+        android:icon="@android:drawable/ic_delete"
+        app:showAsAction="ifRoom"
+        android:title="@string/menu_sort_alph" />
+    <item
         android:id="@+id/action_settings"
         android:icon="@android:drawable/ic_menu_manage"
         app:showAsAction="ifRoom"
-        android:title="Compose" />
+        android:title="@string/menu_settings_button" />
 
 </menu>

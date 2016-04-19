@@ -67,16 +67,16 @@
             android:id="@+id/fab_add_friend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/white"
-            app:fab_colorPressed="@color/white_pressed"
-            android:src="@android:drawable/ic_input_add" />
+            android:src="@drawable/ic_add_friend"
+            app:fab_colorNormal="@color/pink"
+            app:fab_colorPressed="@color/pink_pressed" />
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_add_payment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/white"
-            app:fab_colorPressed="@color/white_pressed"
-            android:src="@android:drawable/ic_menu_add"/>
+            android:src="@drawable/ic_euro_sym"
+            app:fab_colorNormal="@color/pink"
+            app:fab_colorPressed="@color/pink_pressed" />
         <!--app:fab_title="@string/fab_add_payment"-->
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
